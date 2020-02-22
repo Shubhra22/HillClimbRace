@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CarController : MonoBehaviour
 {
     [SerializeField] private WheelJoint2D backWheel;
-
-    private JointMotor2D motorBack;
-
-    public float backwardSpeed;
+    [SerializeField] private WheelJoint2D frontWheel;
+    
+    private JointMotor2D motor;
+    
+    public float carSpeed;
+    public float motorTorque;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +23,11 @@ public class CarController : MonoBehaviour
     void Update()
     {
         float speed = Input.GetAxis("Horizontal");
-        motorBack.motorSpeed = speed * backwardSpeed;
-        backWheel.motor = motorBack;
-
+        motor.motorSpeed = speed * carSpeed;
+        motor.maxMotorTorque = motorTorque;
+        
+        backWheel.motor = motor;
+        frontWheel.motor = motor;
 
     }
 }
