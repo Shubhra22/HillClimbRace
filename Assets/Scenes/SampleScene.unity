@@ -907,7 +907,7 @@ WheelJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -1.4, y: -1.6704825}
+  m_ConnectedAnchor: {x: -1.4, y: -1.5}
   m_Suspension:
     m_DampingRatio: 0.7
     m_Frequency: 2
@@ -1143,6 +1143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1324675050}
   - component: {fileID: 1324675049}
+  - component: {fileID: 1324675051}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -1179,7 +1180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324675048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.85, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1171353872}
@@ -1188,6 +1189,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324675051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324675048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c7d7fb709a02440aeb73e98f1645b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backWheel: {fileID: 1059792080}
+  backwardSpeed: 20000
 --- !u!1 &1664096967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1361,7 @@ WheelJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 1.4498457, y: -1.5999378}
+  m_ConnectedAnchor: {x: 1.4, y: -1.5}
   m_Suspension:
     m_DampingRatio: 0.7
     m_Frequency: 2
