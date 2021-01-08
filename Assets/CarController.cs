@@ -6,72 +6,56 @@ using UnityEngine.Serialization;
 
 namespace JoystickLab
 {
-    
+
     public class CarController : MonoBehaviour
     {
-        [SerializeField] private WheelJoint2D backWheel;
-        [SerializeField] private WheelJoint2D frontWheel;
-    
-        private JointMotor2D rearMotor;
-        private JointMotor2D frontMotor;
-        
-    
-        public float carSpeed;
-        public float motorTorque;
-
         private Rigidbody2D rbody;
-        // Start is called before the first frame update
+        
+        [Header("Wheel Configuration")]
+        public WheelPhysics2D[] wheels;
+        public Transform com;
+
+        private float _throtle;// store input throttle
+        private float _steer; // store input steer
+        private float _brake; // store input brake
+        public float brakeForce;
+        private float finalSpeed;
+        
+        [Header("Car Speed and Steering")]
+        public float acceleration;
+        public float accelRate; // How fast should it gain the max speed
+
+        public bool useLerp;
         void Start()
         {
             rbody = GetComponent<Rigidbody2D>();
+            rbody.centerOfMass = com.localPosition;
+            
+        }
+        
+        void FixedUpdate()
+        {
+            _throtle = Input.GetAxis("Horizontal");
+           
+            finalSpeed = useLerp
+                ? Mathf.SmoothStep(finalSpeed, (_throtle * acceleration),
+                    accelRate * Time.deltaTime)
+                : _throtle * acceleration;
+            DriveCar();
         }
 
-        private void SetFrontMotorSpeed(float speed)
+        void DriveCar()
         {
-            //frontMotor = frontWheel.motor;
-            frontMotor.motorSpeed += speed;
-            frontWheel.motor = frontMotor;
-        }
-
-        private void SetRearMotorSpeed(float speed)
-        {
-            rearMotor = backWheel.motor;
-            rearMotor.motorSpeed = speed;
-            backWheel.motor = rearMotor;
-        }
-    
-        // Update is called once per frame
-        void Update()
-        {
-            float speed = Input.GetAxis("Horizontal");
-            if (speed > 0)
+            foreach (WheelPhysics2D wheel in wheels)
             {
-                frontMotor.motorSpeed -= carSpeed;
-                frontMotor.maxMotorTorque = 2000;
-                frontWheel.motor = frontMotor;
-
-                rearMotor.motorSpeed -= carSpeed;
-                rearMotor.maxMotorTorque = 2000;
-                backWheel.motor = rearMotor;
-                
-                
-//                rearMotor.motorSpeed += Mathf.Clamp(speed * carSpeed, 0, 3000);
-//                if (rearMotor.maxMotorTorque < 0) rearMotor.maxMotorTorque = 1;
-//                rearMotor.maxMotorTorque -= motorTorque;
-//                backWheel.motor = rearMotor;
-//                frontWheel.motor = rearMotor;
+                wheel.throttleSpeed = finalSpeed;
+                ApplyBrake(wheel); 
             }
-            else
-            {
-                if (rearMotor.motorSpeed > 0)
-                {
-                    rearMotor.motorSpeed -= Time.deltaTime * carSpeed;
-                    rearMotor.maxMotorTorque += motorTorque;
-                    backWheel.motor = rearMotor;
-                    frontWheel.motor = rearMotor;
-                }
-            }
-
+        }
+        
+        void ApplyBrake(WheelPhysics2D wheel)
+        {
+            wheel.brakeForce = _brake * brakeForce;
         }
     }
 
