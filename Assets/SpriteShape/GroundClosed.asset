@@ -10,15 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7181f404f1447c0a7a17b3070b952b, type: 3}
-  m_Name: Ground
+  m_Name: GroundClosed
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -180
-    m_End: 180
-    m_Order: 0
+  - m_Start: -45
+    m_End: 45
+    m_Order: 4
     m_Sprites:
     - {fileID: 21300000, guid: 6f4c9d57cab8f414f9d56e30dedbcacd, type: 3}
-    - {fileID: 21300000, guid: 7f639cf024a9f403ea5e66e563799d0e, type: 3}
+  - m_Start: -135
+    m_End: -45
+    m_Order: 3
+    m_Sprites:
+    - {fileID: 21300000, guid: fbc7d6556495848e1b827092ff1b78b5, type: 3}
+  - m_Start: 135
+    m_End: 225
+    m_Order: 2
+    m_Sprites:
+    - {fileID: 0}
+  - m_Start: 45
+    m_End: 135
+    m_Order: 1
+    m_Sprites:
+    - {fileID: 21300000, guid: fbc7d6556495848e1b827092ff1b78b5, type: 3}
   m_FillTexture: {fileID: 2800000, guid: e89905d4c825542268fe324a06ff1258, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
@@ -29,21 +43,21 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6419baa11ec554a658a3e46717bdbb99, type: 3}
   - m_CornerType: 2
     m_Sprites:
-    - {fileID: 21300000, guid: e8ee3b76a91c6472f81d907edd61f02a, type: 3}
+    - {fileID: 21300000, guid: 35f4e382a9a75404b81a812d71ecb654, type: 3}
   - m_CornerType: 3
     m_Sprites:
-    - {fileID: 21300000, guid: 9b81bc38f85e84263b7cb097f0abbb5e, type: 3}
+    - {fileID: 21300000, guid: 0316428fe508d47909ac49a658c92686, type: 3}
   - m_CornerType: 4
     m_Sprites:
-    - {fileID: 21300000, guid: e89905d4c825542268fe324a06ff1258, type: 3}
+    - {fileID: 21300000, guid: e8ee3b76a91c6472f81d907edd61f02a, type: 3}
   - m_CornerType: 5
     m_Sprites:
-    - {fileID: 21300000, guid: e89905d4c825542268fe324a06ff1258, type: 3}
+    - {fileID: 21300000, guid: 9b81bc38f85e84263b7cb097f0abbb5e, type: 3}
   - m_CornerType: 6
     m_Sprites:
-    - {fileID: 21300000, guid: 31b5823d46d0b44f7a11bc6ed061d93e, type: 3}
+    - {fileID: 21300000, guid: 9b81bc38f85e84263b7cb097f0abbb5e, type: 3}
   - m_CornerType: 7
     m_Sprites:
-    - {fileID: 21300000, guid: 31b5823d46d0b44f7a11bc6ed061d93e, type: 3}
-  m_FillOffset: 0.006
+    - {fileID: 21300000, guid: e8ee3b76a91c6472f81d907edd61f02a, type: 3}
+  m_FillOffset: 0
   m_UseSpriteBorders: 1
